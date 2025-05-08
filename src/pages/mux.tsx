@@ -37,7 +37,7 @@ export default function MuxPage({ videos }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const res = await fetch("http://localhost:3000/api/mux"); // or your deployed API
+  const res = await fetch("/api/mux"); // or your deployed API
   const videos: MuxesType = await res.json();
 
   return {

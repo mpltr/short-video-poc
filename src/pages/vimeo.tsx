@@ -37,7 +37,7 @@ export default function VimeoPage({ videos }: Props) {
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const res = await fetch("http://localhost:3000/api/vimeo");
+  const res = await fetch("/api/vimeo");
   const videos: VimeosType = await res.json();
 
   return {
