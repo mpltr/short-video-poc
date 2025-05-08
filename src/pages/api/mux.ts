@@ -23,7 +23,7 @@ export default async function handler(
   res: NextApiResponse<MuxesType>
 ) {
   try {
-    const assetsPage = await mux.video.assets.list({ limit: 3 });
+    const assetsPage = await mux.video.assets.list({ limit: 10 });
     const formatted = assetsPage.data.map((asset) => ({
       id: asset.id,
       playbackId: asset.playback_ids?.[0]?.id || null,
