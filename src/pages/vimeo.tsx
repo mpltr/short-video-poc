@@ -36,8 +36,14 @@ export default function VimeoPage({ videos }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const res = await fetch("/api/vimeo");
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+}) => {
+  const protocol = req.headers["x-forwarded-proto"] || "http";
+  const host = req.headers.host;
+  const baseUrl = `${protocol}://${host}`;
+
+  const res = await fetch(`${baseUrl}/api/vimeo`);
   const videos: VimeosType = await res.json();
 
   return {
